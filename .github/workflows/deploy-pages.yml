@@ -42,16 +42,21 @@ jobs:
           # Apply persistent GitHub-hosted fixes after refreshing the source snapshot.
           python3 - <<'PY'
           from pathlib import Path
+          import re
 
           p = Path("index.html")
           html = p.read_text(encoding="utf-8")
 
-          mobile_tag = '  <link rel="stylesheet" href="mobile-fix.css?v=4" />\n'
+          mobile_tag = '  <link rel="stylesheet" href="mobile-fix.css?v=5" />\n'
           if "mobile-fix.css" not in html:
               html = html.replace("</head>", mobile_tag + "</head>", 1)
           else:
-              import re
-              html = re.sub(r'<link rel="stylesheet" href="mobile-fix\.css\?v=\d+"\s*/?>', '<link rel="stylesheet" href="mobile-fix.css?v=4" />', html, count=1)
+              html = re.sub(r'<link rel="stylesheet" href="mobile-fix\.css\?v=\d+"\s*/?>', '<link rel="stylesheet" href="mobile-fix.css?v=5" />', html, count=1)
+
+          # Clicking the brand should simply return to the page root. Using #top
+          # caused a noticeable anchor jump on mobile and made the sticky header
+          # look as if it was hiding/collapsing.
+          html = html.replace('<a class="brand" href="#top"', '<a class="brand" href="/"', 1)
 
           # Render the wildlife thermal photo as a real IMG instead of relying only
           # on background-image. This is more reliable on mobile browsers.

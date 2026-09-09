@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0D1115" />
+  <title>H-CORE AERIAL SYSTEMS — Termowizja / Inspekcje / Poszukiwania</title>
+  <meta name="description" content="H-CORE AERIAL SYSTEMS — termowizja, inspekcje techniczne, poszukiwanie zwierząt i monitoring z powietrza. Kraków / Małopolska." />
+  <style>
+    :root{
+      --bg:#0D1115;
+      --bg2:#0A0D10;
+      --panel:#11171C;
+      --panel2:#0F1418;
+      --ink:#F1F3F4;
+      --muted:#8A969D;
+      --muted2:#59656B;
+      --red:#C5222E;
+      --red2:#8D1720;
+      --line:#263038;
+      --line2:#192127;
+      --white:#FFFFFF;
+      --max:1240px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--bg);color:var(--ink);font-family:Arial,Helvetica,sans-serif;overflow-x:hidden}
+    body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:-2;background:
+      linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px);
+      background-size:56px 56px}
+    body:after{content:"";position:fixed;inset:0;pointer-events:none;z-index:50;opacity:.2;background:repeating-linear-gradient(180deg,rgba(255,255,255,.018) 0,rgba(255,255,255,.018) 1px,transparent 1px,transparent 4px);mix-blend-mode:soft-light}
+    a{color:inherit;text-decoration:none}
+    .wrap{width:min(var(--max),calc(100% - 48px));margin:auto}
+    .mono{font-family:"Courier New",monospace}
+    .label{font:700 11px/1.2 "Courier New",monospace;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+    .red{color:var(--red)}
+
+    /* NAV */
+    .nav{position:sticky;top:0;z-index:40;background:rgba(13,17,21,.88);backdrop-filter:blur(14px);border-bottom:1px solid var(--line2)}
+    .nav-inner{height:72px;display:flex;align-items:center;justify-content:space-between;gap:28px}
+    .brand{display:flex;align-items:center;gap:12px;min-width:220px}
+    .brand-mark{width:38px;height:38px;display:block;flex:0 0 38px}
+    .brand-mark .frame{fill:none;stroke:#69757B;stroke-width:1.2}
+    .brand-mark .cut{fill:none;stroke:var(--red);stroke-width:1.7}
+    .brand-mark .arm{stroke:#AAB2B6;stroke-width:1.4}
+    .brand-mark .rotor{fill:none;stroke:#69757B;stroke-width:1}
+    .brand-mark .sensor{fill:var(--red);filter:drop-shadow(0 0 4px rgba(197,34,46,.75))}
+    .brand-type{display:flex;align-items:center;line-height:1}
+    .brand-name{font-size:16px;font-weight:900;letter-spacing:.10em;color:#F4F5F5;white-space:nowrap}
+    .brand-sub{font:700 8px/1 "Courier New",monospace;letter-spacing:.23em;text-transform:uppercase;color:var(--red)}
+    .nav-links{display:flex;gap:28px;font:700 11px/1 "Courier New",monospace;letter-spacing:.13em;text-transform:uppercase;color:#9AA4AA}
+    .nav-links a:hover{color:var(--white)}
+    .nav-cta{border:1px solid var(--red);padding:12px 15px;font:700 11px/1 "Courier New",monospace;letter-spacing:.12em;text-transform:uppercase;background:rgba(197,34,46,.06)}
+
+    /* HERO */
+    .hero{min-height:760px;display:flex;align-items:center;position:relative;border-bottom:1px solid var(--line2);overflow:hidden}
+    .hero:before{content:"";position:absolute;right:-12vw;top:-15vw;width:48vw;height:48vw;border:1px solid rgba(197,34,46,.16);border-radius:50%;box-shadow:0 0 0 70px rgba(197,34,46,.025),0 0 0 140px rgba(197,34,46,.018)}
+    .hero:after{content:"01 / PLATFORMA TERENOWA";position:absolute;right:22px;bottom:18px;color:#455158;font:700 10px "Courier New",monospace;letter-spacing:.16em}
+    .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:64px;align-items:center;padding:88px 0 74px}
+    .hero-kicker{display:flex;align-items:center;gap:13px;margin-bottom:24px}.hero-kicker:before{content:"";width:54px;height:2px;background:var(--red)}
+    h1{margin:0;font-size:clamp(62px,9.1vw,142px);line-height:.78;letter-spacing:-.08em;text-transform:uppercase;font-weight:900}
+    h1 .outline{display:block;color:transparent;-webkit-text-stroke:1px #667178}
+    .hero-copy{margin:30px 0 28px;max-width:680px;font-size:18px;line-height:1.65;color:#A3ADB2}
+    .hero-actions{display:flex;gap:12px;flex-wrap:wrap}
+    .btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 20px;border:1px solid var(--line);font:800 11px/1 "Courier New",monospace;letter-spacing:.12em;text-transform:uppercase;transition:.18s ease}
+    .btn-primary{background:var(--red);border-color:var(--red);color:white}.btn-primary:hover{background:#D72A36}
+    .btn-ghost:hover{border-color:#69757B}
+    .hero-meta{display:grid;grid-template-columns:repeat(3,1fr);max-width:680px;margin-top:44px;border-top:1px solid var(--line)}
+    .hero-meta div{padding:16px 18px 0 0}.hero-meta strong{display:block;color:#E4E7E8;font:700 12px "Courier New",monospace;letter-spacing:.08em}.hero-meta span{display:block;color:#626E74;font-size:11px;margin-top:5px}
+
+    .scope{height:500px;position:relative;border-left:1px solid var(--line2);border-right:1px solid var(--line2);background:linear-gradient(90deg,rgba(7,10,12,.42),rgba(7,10,12,.04)),url("data:image/webp;base64,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[... ELLIPSIZATION ...]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") 64% center/cover no-repeat;overflow:hidden}
+    .scope:before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:32px 32px}
+    .scope:after{content:"";position:absolute;inset:0;z-index:2;box-shadow:inset 0 0 90px rgba(5,8,10,.65);pointer-events:none}
+    .scope .corner{position:absolute;z-index:4;width:34px;height:34px}.tl{top:14px;left:14px;border-top:2px solid var(--red);border-left:2px solid var(--red)}.tr{top:14px;right:14px;border-top:2px solid var(--red);border-right:2px solid var(--red)}.bl{bottom:14px;left:14px;border-bottom:2px solid var(--red);border-left:2px solid var(--red)}.br{bottom:14px;right:14px;border-bottom:2px solid var(--red);border-right:2px solid var(--red)}
+    .scope .cross:before,.scope .cross:after{content:"";position:absolute;background:#2B353B}.scope .cross:before{height:1px;left:7%;right:7%;top:50%}.scope .cross:after{width:1px;top:7%;bottom:7%;left:50%}
+    .range{display:none;position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:315px;height:315px;border:1px solid #29343B;border-radius:50%}.range:before,.range:after{content:"";position:absolute;border:1px solid #1F2A30;border-radius:50%}.range:before{inset:22%}.range:after{inset:40%}
+    .drone-glyph{display:none;position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:150px;height:110px}
+    .drone-glyph .body{position:absolute;left:54px;top:40px;width:42px;height:34px;border:2px solid #A6AFB4;transform:rotate(45deg)}
+    .drone-glyph .arm{position:absolute;width:64px;height:2px;background:#657179;top:55px}.a{left:12px;transform:rotate(24deg)}.b{right:12px;transform:rotate(-24deg)}
+    .drone-glyph .rot{position:absolute;width:30px;height:30px;border:1px solid #566168;border-radius:50%}.r1{left:0;top:24px}.r2{right:0;top:24px}.r3{left:18px;bottom:6px}.r4{right:18px;bottom:6px}
+    .drone-glyph .sensor{position:absolute;width:11px;height:11px;border-radius:50%;background:var(--red);left:69px;top:51px;box-shadow:0 0 28px rgba(197,34,46,.9)}
+    .target-box{display:none;position:absolute;right:22%;top:31%;width:58px;height:42px;border:1px solid var(--red)}
+    .target-box:after{content:"BLOKADA TERMICZNA";position:absolute;left:68px;top:12px;white-space:nowrap;color:var(--red);font:700 9px "Courier New",monospace;letter-spacing:.13em}
+    .scope-head{position:absolute;z-index:4;left:22px;top:22px;right:22px;display:flex;justify-content:space-between;color:#B2BBC0;text-shadow:0 1px 12px #05080A;font:700 9px "Courier New",monospace;letter-spacing:.15em}
+    .scope-data{position:absolute;z-index:4;left:22px;bottom:22px;display:grid;grid-template-columns:repeat(2,auto);gap:8px}.scope-data span{border:1px solid #354149;padding:8px 10px;background:rgba(7,11,14,.82);color:#89969C;font:700 9px "Courier New",monospace;letter-spacing:.08em}.scope-data b{color:#F0F2F3}
+
+    /* SECTION BASICS */
+    .section{padding:96px 0;border-bottom:1px solid var(--line2)}
+    .section-top{display:grid;grid-template-columns:180px 1fr;gap:28px;margin-bottom:54px}
+    .section-index{color:var(--red);font:700 11px "Courier New",monospace;letter-spacing:.13em}
+    .section-title{max-width:980px}.section-title h2{margin:0 0 18px;font-size:clamp(42px,6vw,80px);line-height:.9;letter-spacing:-.06em;text-transform:uppercase}.section-title p{margin:0;max-width:760px;color:#89959B;font-size:17px;line-height:1.65}
+
+    /* SERVICE GRID */
+    .services{display:grid;grid-template-columns:repeat(2,1fr);border-top:1px solid var(--line);border-left:1px solid var(--line)}
+    .service{min-height:320px;padding:30px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);position:relative;background:linear-gradient(180deg,rgba(255,255,255,.008),transparent)}
+    .service:after{content:"";position:absolute;left:0;top:0;width:0;height:2px;background:var(--red);transition:.25s ease}.service:hover:after{width:100%}
+    .service .code{color:#5E6A70;font:700 10px "Courier New",monospace;letter-spacing:.14em}.service h3{font-size:28px;margin:64px 0 14px;letter-spacing:-.03em}.service p{color:#7F8B91;line-height:1.65;max-width:520px;margin:0}.service .tag{position:absolute;right:22px;bottom:20px;color:#465158;font:700 9px "Courier New",monospace;letter-spacing:.12em;text-transform:uppercase}
+
+    /* DRONE WILDLIFE MONITORING */
+    .search-block{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--line);min-height:560px}
+    .search-copy{padding:48px;display:flex;flex-direction:column;justify-content:space-between}
+    .search-copy h3{font-size:clamp(42px,5vw,70px);line-height:.92;margin:18px 0 22px;letter-spacing:-.055em;text-transform:uppercase}.search-copy p{color:#89959B;line-height:1.7;font-size:16px;max-width:620px}
+    .wildlife-options{margin-top:34px;display:grid;grid-template-columns:repeat(2,1fr);border-top:1px solid var(--line);border-left:1px solid var(--line)}
+    .wildlife-option{padding:22px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);background:rgba(255,255,255,.008)}
+    .wildlife-option small{color:var(--red);font:700 9px "Courier New",monospace;letter-spacing:.14em}
+    .wildlife-option h4{margin:30px 0 10px;font-size:20px;line-height:1.05;text-transform:uppercase;letter-spacing:-.025em}
+    .wildlife-option p{font-size:13px;line-height:1.55;margin:0;color:#7F8B91}
+    .search-list{margin-top:24px;display:grid;gap:0;border-top:1px solid var(--line)}.search-list div{display:flex;justify-content:space-between;gap:20px;padding:13px 0;border-bottom:1px solid var(--line2);color:#AAB2B6;font:700 11px "Courier New",monospace;letter-spacing:.08em}.search-list span:last-child{color:#59656B}
+    .thermal{position:relative;overflow:hidden;background:linear-gradient(rgba(5,7,9,.1),rgba(5,7,9,.32)),url("data:image/webp;base64,UklGRsCWAQBXRUJQVlA4ILSWAQCwCwqdASrcBegDPlUokEcjoiGoIRFJ8QAKiWlsrG/ePtm67tYv++saEQY3P1LeX51BtSmoL23/lbN/WHLH6L/hvCH+18IT07/N+wJ/Lf7h6YmFr8V/y/YE/sv+i5T/QA8x/mffbXUG/4/Jb/Af9X1GZ...") center/cover no-repeat}
+    .thermal:before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(rgba(255,255,255,.024) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.024) 1px,transparent 1px);background-size:34px 34px;box-shadow:inset 0 0 100px rgba(5,7,9,.55)}
+    .thermal:after{content:"WILDLIFE MONITORING / IR / SIATKA 04";position:absolute;z-index:3;left:24px;top:22px;color:#B1BABF;text-shadow:0 1px 10px #050709;font:700 9px "Courier New",monospace;letter-spacing:.14em}
+    .heat-animal{display:none;position:absolute;left:59%;top:39%;width:112px;height:58px;border-radius:55% 45% 50% 50%;background:radial-gradient(circle at 38% 46%,#FFF4C4 0 10%,#F58B46 11% 28%,#CC2C35 29% 52%,rgba(197,34,46,.3) 53% 70%,transparent 71%);filter:blur(.4px);box-shadow:0 0 50px rgba(197,34,46,.35)}
+    .heat-animal:before{content:"";position:absolute;right:-20px;top:12px;width:32px;height:25px;border-radius:50%;background:#E44936}.heat-animal:after{content:"";position:absolute;left:16px;bottom:-20px;width:8px;height:30px;background:#C92A34;box-shadow:35px 0 0 #C92A34,66px 0 0 #C92A34}
+    .lock{position:absolute;z-index:2;left:55%;top:35%;width:190px;height:130px;border:1px solid var(--red)}.lock:before,.lock:after{content:"";position:absolute;background:var(--red)}.lock:before{left:-24px;right:-24px;top:50%;height:1px}.lock:after{top:-24px;bottom:-24px;left:50%;width:1px}.lock-label{position:absolute;z-index:3;left:calc(55% + 6px);top:calc(35% - 26px);color:var(--red);font:700 9px "Courier New",monospace;letter-spacing:.12em}
+    .thermal-note{position:absolute;z-index:3;left:24px;bottom:22px;right:24px;display:flex;justify-content:space-between;color:#A2ADB2;text-shadow:0 1px 10px #050709;font:700 9px "Courier New",monospace;letter-spacing:.1em}
+
+    /* PROCESS */
+    .process{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line)}
+    .step{padding:28px 26px 10px 0;border-right:1px solid var(--line2);min-height:230px}.step:last-child{border-right:0}.step .n{color:var(--red);font:700 12px "Courier New",monospace}.step h4{font-size:19px;margin:64px 0 10px}.step p{color:#707C82;font-size:14px;line-height:1.6;margin:0}
+
+    /* TECH */
+    .tech{display:grid;grid-template-columns:1.2fr .8fr;gap:0;border:1px solid var(--line)}
+    .tech-main{padding:40px;border-right:1px solid var(--line)}.tech-main h3{font-size:42px;margin:14px 0 22px;letter-spacing:-.04em}.tech-main p{color:#7F8B91;line-height:1.7;max-width:700px}.specs{display:grid;grid-template-columns:repeat(2,1fr);margin-top:34px;border-top:1px solid var(--line);border-left:1px solid var(--line)}.spec{padding:18px;border-right:1px solid var(--line);border-bottom:1px solid var(--line)}.spec small{display:block;color:#59656B;font:700 9px "Courier New",monospace;letter-spacing:.12em}.spec strong{display:block;margin-top:6px;font-size:16px}
+    .tech-side{padding:40px;background:var(--bg2);display:flex;flex-direction:column;justify-content:space-between}.tech-side .big{font-size:74px;line-height:.8;font-weight:900;letter-spacing:-.08em}.tech-side .big span{display:block;color:transparent;-webkit-text-stroke:1px #5E6A70}.tech-side p{color:#727E84;line-height:1.6}
+
+    /* CTA */
+    .cta{padding:92px 0 120px}.cta-box{position:relative;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:58px 0;display:grid;grid-template-columns:1fr auto;gap:40px;align-items:center}.cta-box:before{content:"";position:absolute;left:0;top:-1px;width:180px;height:2px;background:var(--red)}.cta h2{font-size:clamp(44px,6vw,78px);line-height:.88;letter-spacing:-.06em;text-transform:uppercase;margin:0 0 18px}.cta p{color:#7E8A90;max-width:700px;margin:0;line-height:1.6}.cta-actions{display:flex;flex-direction:column;gap:10px;min-width:230px}
+    footer{border-top:1px solid var(--line2);padding:28px 0 38px;color:#59656B}.footer-inner{display:flex;justify-content:space-between;gap:20px;align-items:center;font:700 9px "Courier New",monospace;letter-spacing:.11em;text-transform:uppercase}
+
+    @media(max-width:980px){
+      .hero{min-height:auto}.hero-grid,.tech,.search-block{grid-template-columns:1fr}.hero-grid{gap:44px}.scope{height:430px}.section-top{grid-template-columns:1fr}.services{grid-template-columns:1fr}.process{grid-template-columns:1fr 1fr}.tech-main{border-right:0;border-bottom:1px solid var(--line)}.nav-links{display:none}.cta-box{grid-template-columns:1fr}.cta-actions{min-width:0;max-width:320px}
+    }
+    @media(max-width:620px){
+      .wrap{width:min(var(--max),calc(100% - 26px))}.nav-inner{height:64px}.brand{min-width:auto}.brand-name{font-size:13px}.brand-sub{font-size:7px;letter-spacing:.17em}.brand-mark{width:34px;height:34px;flex-basis:34px}.nav-cta{padding:10px;font-size:9px}.hero-grid{padding:62px 0 50px}.hero-copy{font-size:16px}.hero-meta{grid-template-columns:1fr}.hero-meta div{padding:12px 0;border-bottom:1px solid var(--line2)}.scope{height:340px}.range{width:240px;height:240px}.section{padding:68px 0}.section-top{margin-bottom:36px}.service{min-height:260px;padding:24px}.service h3{margin-top:48px}.search-copy{padding:28px}.wildlife-options{grid-template-columns:1fr}.wildlife-option h4{margin-top:18px}.thermal{min-height:360px}.process{grid-template-columns:1fr}.step{border-right:0;border-bottom:1px solid var(--line2);min-height:170px}.step h4{margin-top:32px}.tech-main,.tech-side{padding:28px}.specs{grid-template-columns:1fr}.cta{padding:70px 0 90px}.footer-inner{align-items:flex-start;flex-direction:column}
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="wrap nav-inner">
+      <a class="brand" href="#top" aria-label="H-CORE AERIAL SYSTEMS">
+        <svg class="brand-mark" viewBox="0 0 40 40" aria-hidden="true">
+          <path class="frame" d="M4.5 5.5H27.5L35.5 13.5V34.5H12.5L4.5 26.5Z"/>
+          <path class="cut" d="M4.5 5.5V17.5M35.5 22.5V34.5H23.5"/>
+          <line class="arm" x1="12.5" y1="14.5" x2="27.5" y2="25.5"/>
+          <line class="arm" x1="27.5" y1="14.5" x2="12.5" y2="25.5"/>
+          <circle class="rotor" cx="10.5" cy="13" r="3.2"/>
+          <circle class="rotor" cx="29.5" cy="13" r="3.2"/>
+          <circle class="rotor" cx="10.5" cy="27" r="3.2"/>
+          <circle class="rotor" cx="29.5" cy="27" r="3.2"/>
+          <circle class="sensor" cx="20" cy="20" r="2.5"/>
+        </svg>
+        <span class="brand-type"><span class="brand-name">H-CORE AERIAL SYSTEMS</span></span>
+      </a>
+      <div class="nav-links">
+        <a href="#uslugi">Usługi</a><a href="#wildlife">Wildlife</a><a href="#system">System</a><a href="#kontakt">Kontakt</a>
+      </div>
+      <a class="nav-cta" href="#kontakt">Zgłoś zlecenie</a>
+    </div>
+  </nav>
+
+  <main id="top">
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <div class="hero-kicker label"><span class="red">01 / H-CORE AERIAL SYSTEMS</span> / SYSTEMY LOTNICZE I TERMOWIZJA</div>
+          <h1>WYKRYJ.<span class="outline">ZLOKALIZUJ.</span>ZWERYFIKUJ.</h1>
+          <p class="hero-copy">Dron z termowizją wspiera inspekcje techniczne, poszukiwanie zwierząt oraz drone wildlife monitoring dla zarządców terenów i gospodarki łowieckiej. Pozyskujemy obraz z powietrza tam, gdzie liczy się zasięg, czas i dostęp do miejsca.</p>
+          <div class="hero-actions"><a class="btn btn-primary" href="#kontakt">Zleć nalot</a><a class="btn btn-ghost" href="#uslugi">Zakres usług</a></div>
+          <div class="hero-meta"><div><strong>TERMOWIZJA / RGB / TELEOBIEKTYW</strong><span>wielosensorowy obraz</span></div><div><strong>KRAKÓW / MAŁOPOLSKA</strong><span>mobilny zespół terenowy</span></div><div><strong>RAPORT TERENOWY</strong><span>materiał + lokalizacja + wnioski</span></div></div>
+        </div>
+        <div class="scope" aria-label="System dronowy">
+          <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+          <div class="scope-head"><span>WĘZEŁ DRONA / 01</span><span>AKTYWNY KANAŁ TERMICZNY</span></div>
+          <div class="cross"></div><div class="range"></div>
+          <div class="drone-glyph"><i class="arm a"></i><i class="arm b"></i><i class="rot r1"></i><i class="rot r2"></i><i class="rot r3"></i><i class="rot r4"></i><i class="body"></i><i class="sensor"></i></div>
+          <div class="target-box"></div>
+          <div class="scope-data"><span>TRYB <b>POSZUKIWANIE</b></span><span>JEDNOSTKA <b>HCD-01</b></span><span>OPTYKA <b>RGB + TERMOWIZJA</b></span><span>STATUS <b>GOTOWY</b></span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="uslugi">
+      <div class="wrap">
+        <div class="section-top"><div class="section-index">02 / MOŻLIWOŚCI</div><div class="section-title"><h2>Nie latamy dla samego obrazu.</h2><p>Platforma służy do pozyskiwania użytecznych danych: wykrycia anomalii, sprawdzenia trudno dostępnego miejsca, lokalizacji obiektu i dokumentacji stanu.</p></div></div>
+        <div class="services">
+          <article class="service"><div class="code">CAP-01 / TERMOWIZJA</div><h3>Termowizja obiektów</h3><p>Dachy, hale, infrastruktura, instalacje i obszary wymagające szybkiej oceny termicznej. Materiał do dalszej weryfikacji technicznej.</p><span class="tag">termowizja / anomalie / raport</span></article>
+          <article class="service"><div class="code">CAP-02 / FOTOWOLTAIKA</div><h3>Fotowoltaika</h3><p>Inspekcje termowizyjne instalacji i farm PV, identyfikacja obszarów o odmiennej charakterystyce cieplnej i dokumentacja RGB.</p><span class="tag">PV / termowizja / RGB</span></article>
+          <article class="service"><div class="code">CAP-03 / TELEOBIEKTYW</div><h3>Inspekcje z dystansu</h3><p>Kominy, maszty, dachy, elewacje, konstrukcje stalowe i elementy, których kontrola naziemna wymagałaby podnośnika lub pracy na wysokości.</p><span class="tag">tele / przybliżenie / dostęp</span></article>
+          <article class="service"><div class="code">CAP-04 / NOC</div><h3>Monitoring nocny</h3><p>Kontrola terenu i obiektów po zmroku, lokalizacja aktywności i szybka weryfikacja zdarzeń z użyciem obrazu termowizyjnego oraz kamery do słabego oświetlenia.</p><span class="tag">noc / teren / obiekt</span></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="wildlife">
+      <div class="wrap">
+        <div class="section-top"><div class="section-index">03 / DRONE WILDLIFE MONITORING</div><div class="section-title"><h2>Zwierzyna. Wykryta z powietrza.</h2><p>Termowizyjne rozpoznanie dużych obszarów dla właścicieli zwierząt, zarządców terenów, kół łowieckich i podmiotów zajmujących się ochroną przyrody.</p></div></div>
+        <div class="search-block">
+          <div class="search-copy">
+            <div><div class="label red">Termowizja / RGB / teleobiektyw</div><h3>Dwie misje. Jeden system.</h3><p>Lot planujemy pod konkretny cel: szybkie odnalezienie zwierzęcia albo zebranie uporządkowanych danych o obecności i aktywności dzikiej zwierzyny.</p>
+              <div class="wildlife-options">
+                <article class="wildlife-option"><small>01 / SEARCH</small><h4>Poszukiwanie zwierząt</h4><p>Lokalizacja psów, kotów i zwierząt gospodarskich na polach, łąkach, skrajach lasów i nieużytkach — szczególnie po zmroku i przy ograniczonej widoczności.</p></article>
+                <article class="wildlife-option"><small>02 / MONITORING</small><h4>Wildlife monitoring</h4><p>Obserwacja zwierzyny, rozpoznanie jej aktywności, dokumentacja szkód i monitoring łowisk wspierający gospodarkę łowiecką oraz zarządzanie terenem.</p></article>
+              </div>
+            </div>
+            <div class="search-list"><div><span>ZWIERZYNA / ŁOWISKA</span><span>MONITORING</span></div><div><span>POLA / ŁĄKI / LAS</span><span>ROZPOZNANIE</span></div><div><span>SZKODY ŁOWIECKIE</span><span>DOKUMENTACJA</span></div><div><span>NOC / SŁABA WIDOCZNOŚĆ</span><span>TERMOWIZJA</span></div></div>
+          </div>
+          <div class="thermal"><div class="lock"></div><div class="lock-label">CEL / SYGNATURA CIEPLNA</div><div class="heat-animal"></div><div class="thermal-note"><span>CZUJNIK IR / AKTYWNY</span><span>SIATKA / 04-17</span></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="section-top"><div class="section-index">04 / PRZEBIEG ZLECENIA</div><div class="section-title"><h2>Prosty proces terenowy.</h2><p>Każde zlecenie zaczyna się od celu operacji, a kończy materiałem, który można realnie wykorzystać.</p></div></div>
+        <div class="process"><div class="step"><div class="n">01</div><h4>Cel</h4><p>Ustalamy obszar, problem i oczekiwany rezultat.</p></div><div class="step"><div class="n">02</div><h4>Plan lotu</h4><p>Sprawdzamy warunki, przestrzeń i dobieramy sensor oraz metodę przeszukania.</p></div><div class="step"><div class="n">03</div><h4>Nalot</h4><p>Zbieramy termowizję, obraz RGB, teleobiektyw i dane lokalizacyjne odpowiednie do zadania.</p></div><div class="step"><div class="n">04</div><h4>Raport</h4><p>Przekazujemy materiał, wskazane anomalie, lokalizacje i raport zależny od zakresu usługi.</p></div></div>
+      </div>
+    </section>
+
+    <section class="section" id="system">
+      <div class="wrap">
+        <div class="section-top"><div class="section-index">05 / PLATFORMA</div><div class="section-title"><h2>Wielosensorowa. Gotowa do działania.</h2><p>Jedna platforma łączy termowizję, szeroki obraz, teleobiektyw i pracę po zmroku. Dzięki temu dron może najpierw wykryć, potem zlokalizować i na końcu zweryfikować cel.</p></div></div>
+        <div class="tech">
+          <div class="tech-main"><div class="label">H-CORE AERIAL SYSTEMS / ZESTAW SENSORÓW DRONA</div><h3>Termowizja + RGB + teleobiektyw</h3><p>System wykorzystywany do szybkiej oceny terenu i obiektów. Dobór trybu pracy zależy od celu zlecenia, warunków środowiskowych i wymaganej dokładności dokumentacji.</p><div class="specs"><div class="spec"><small>SENSOR 01</small><strong>TERMOWIZJA</strong></div><div class="spec"><small>SENSOR 02</small><strong>KAMERA SZEROKA RGB</strong></div><div class="spec"><small>SENSOR 03</small><strong>TELEOBIEKTYW</strong></div><div class="spec"><small>OPERACJE</small><strong>DZIEŃ / NOC</strong></div></div></div>
+          <div class="tech-side"><div class="big">OPERACJE<span>.</span></div><div><div class="label red">Zasada działania</div><p>Nie obiecujemy „magii z drona”. Dron skraca czas rozpoznania i dostarcza perspektywę oraz dane, których często nie da się uzyskać z ziemi.</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta" id="kontakt">
+      <div class="wrap cta-box"><div><div class="label red">H-CORE AERIAL SYSTEMS / KRAKÓW + MAŁOPOLSKA</div><h2>Masz teren do sprawdzenia dronem?</h2><p>Opisz problem, lokalizację i oczekiwany rezultat. Ocenimy, czy użycie drona ma sens i jaki tryb pracy będzie właściwy.</p></div><div class="cta-actions"><a class="btn btn-primary" href="tel:+48000000000">+48 000 000 000</a><a class="btn btn-ghost" href="mailto:kontakt@hcoreaerial.pl">kontakt@hcoreaerial.pl</a></div></div>
+    </section>
+  </main>
+
+  <footer><div class="wrap footer-inner"><span>H-CORE AERIAL SYSTEMS © 2026</span><span>Termowizja / Inspekcje / Poszukiwania / Kraków / Małopolska</span></div></footer>
+</body>
+</html>

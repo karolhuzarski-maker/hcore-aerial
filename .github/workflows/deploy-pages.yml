@@ -32,24 +32,38 @@ jobs:
 
           curl -fsSL --retry 3 "$SOURCE/" -o index.html
 
-          # The source snapshot contains relative asset URLs. Mirror the assets
-          # required by the page so GitHub Pages does not render broken images.
+          # Mirror assets required by the page.
           mkdir -p assets
           curl -fsSL --retry 3 "$SOURCE/assets/h-core-aerial-logo-1a.png" -o assets/h-core-aerial-logo-1a.png
           curl -fsSL --retry 3 "$SOURCE/assets/pv-thermal-inspection.webp" -o assets/pv-thermal-inspection.webp
           curl -fsSL --retry 3 "$SOURCE/assets/wild-boars-thermal.webp" -o assets/wild-boars-thermal.webp
           curl -fsSL --retry 3 "$SOURCE/apple-touch-icon.png" -o apple-touch-icon.png
 
-          # Keep mobile fixes separate from the imported snapshot and inject
-          # the stylesheet on every refresh of index.html.
+          # Apply persistent GitHub-hosted fixes after refreshing the source snapshot.
           python3 - <<'PY'
           from pathlib import Path
 
           p = Path("index.html")
           html = p.read_text(encoding="utf-8")
-          tag = '  <link rel="stylesheet" href="mobile-fix.css?v=3" />\n'
+
+          mobile_tag = '  <link rel="stylesheet" href="mobile-fix.css?v=4" />\n'
           if "mobile-fix.css" not in html:
-              html = html.replace("</head>", tag + "</head>", 1)
+              html = html.replace("</head>", mobile_tag + "</head>", 1)
+          else:
+              import re
+              html = re.sub(r'<link rel="stylesheet" href="mobile-fix\.css\?v=\d+"\s*/?>', '<link rel="stylesheet" href="mobile-fix.css?v=4" />', html, count=1)
+
+          # Render the wildlife thermal photo as a real IMG instead of relying only
+          # on background-image. This is more reliable on mobile browsers.
+          thermal_open = '<div class="thermal">'
+          thermal_img = '<div class="thermal"><img class="thermal-photo" src="assets/wild-boars-thermal.webp?v=2" alt="Termowizyjny obraz dzików z drona" loading="lazy" decoding="async">'
+          if 'class="thermal-photo"' not in html:
+              html = html.replace(thermal_open, thermal_img, 1)
+
+          thermal_style = '''\n  <style id="thermal-photo-fix">\n    .thermal{background:#090D10 !important}\n    .thermal-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;z-index:0}\n  </style>\n'''
+          if 'id="thermal-photo-fix"' not in html:
+              html = html.replace("</head>", thermal_style + "</head>", 1)
+
           p.write_text(html, encoding="utf-8")
           PY
 

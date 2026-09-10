@@ -86,6 +86,27 @@ jobs:
           if 'function closeMenu' not in html:
               html = html.replace("</body>", navigation_script + "</body>", 1)
 
+          smooth_brand_script = '''
+            <script id="smooth-brand-scroll">
+              (function(){
+                var brand=document.querySelector('.brand');
+                if(!brand)return;
+                brand.addEventListener('click',function(event){
+                  if(event.button!==0||event.metaKey||event.ctrlKey||event.shiftKey||event.altKey)return;
+                  event.preventDefault();
+                  var toggle=document.querySelector('.nav-toggle'),panel=document.getElementById('nav-panel');
+                  if(toggle&&panel){toggle.setAttribute('aria-expanded','false');toggle.setAttribute('aria-label','Otwórz menu');panel.hidden=true;}
+                  if(location.hash)history.replaceState(null,'',location.pathname+location.search);
+                  var motion=window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth';
+                  window.scrollTo({top:0,behavior:motion});
+                });
+              })();
+            </script>
+          '''
+          if 'id="smooth-brand-scroll"' not in html:
+              html = html.replace("</body>", smooth_brand_script + "</body>", 1)
+
+
           p.write_text(html, encoding="utf-8")
           PY
 

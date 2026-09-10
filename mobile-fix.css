@@ -2,13 +2,22 @@
 
 @media (max-width: 700px) {
   html, body { width: 100%; max-width: 100%; overflow-x: hidden; }
+  body { padding-top: 64px; }
   body:after { opacity: .10; }
   img { max-width: 100%; }
 
   .wrap { width: calc(100% - 24px); }
 
   /* Header */
-  .nav { border-bottom-width: 3px; }
+  .nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 100;
+    border-bottom-width: 3px;
+  }
   .nav-inner { height: 64px; gap: 8px; }
   .brand { width: min(190px, 58vw); }
   .nav-cta {

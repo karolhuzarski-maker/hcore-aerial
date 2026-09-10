@@ -159,17 +159,55 @@
     .thermal{background:#090D10 !important}
     .thermal-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;z-index:0}
   </style>
+
+  <style id="navigation-fix">
+    .nav-links{display:flex;align-items:center;gap:24px}
+    .nav-links a{position:relative;padding:10px 0}
+    .nav-links a:after{content:"";position:absolute;left:0;right:100%;bottom:0;height:2px;background:var(--red);transition:right .18s ease}
+    .nav-links a:hover:after,.nav-links a[aria-current="page"]:after{right:0}
+    .nav-actions{display:flex;align-items:center;gap:10px;flex:0 0 auto}
+    .nav-toggle{display:none;align-items:center;justify-content:center;gap:9px;height:38px;padding:0 12px;border:1px solid #0A0D10;background:transparent;color:#0A0D10;font:700 10px/1 "Courier New",monospace;letter-spacing:.12em;text-transform:uppercase;cursor:pointer}
+    .nav-toggle:hover,.nav-toggle[aria-expanded="true"]{color:#F2F1ED;background:#0A0D10}
+    .nav-toggle-icon,.nav-toggle-icon:before,.nav-toggle-icon:after{display:block;width:14px;height:2px;background:currentColor;transition:transform .18s ease,opacity .18s ease}
+    .nav-toggle-icon{position:relative}
+    .nav-toggle-icon:before,.nav-toggle-icon:after{content:"";position:absolute;left:0}
+    .nav-toggle-icon:before{top:-5px}.nav-toggle-icon:after{top:5px}
+    .nav-toggle[aria-expanded="true"] .nav-toggle-icon{background:transparent}
+    .nav-toggle[aria-expanded="true"] .nav-toggle-icon:before{top:0;transform:rotate(45deg)}
+    .nav-toggle[aria-expanded="true"] .nav-toggle-icon:after{top:0;transform:rotate(-45deg)}
+    .nav-panel{position:absolute;left:0;right:0;top:100%;background:#090D10;color:#F1F3F4;border-top:2px solid var(--red);box-shadow:0 18px 42px rgba(0,0,0,.28)}
+    .nav-panel[hidden]{display:none}
+    .nav-panel-inner{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
+    .nav-panel a{display:flex;align-items:center;gap:13px;padding:18px 0;border-bottom:1px solid var(--line);font:700 11px/1 "Courier New",monospace;letter-spacing:.13em;text-transform:uppercase}
+    .nav-panel a:nth-child(odd){padding-right:24px}.nav-panel a:nth-child(even){padding-left:24px}
+    .nav-panel a span{color:var(--red);font-size:9px}.nav-panel a:hover{color:var(--red)}
+    @media(max-width:900px){.nav-links{display:none}.nav-toggle{display:inline-flex}}
+    @media(max-width:620px){.nav-actions{gap:6px}.nav-toggle{width:34px;padding:0}.nav-toggle-label{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}.nav-panel-inner{grid-template-columns:1fr}.nav-panel a,.nav-panel a:nth-child(odd),.nav-panel a:nth-child(even){padding:15px 0}.nav-panel a:last-child{border-bottom:0}}
+  </style>
 </head>
 <body>
-  <nav class="nav">
+  <nav class="nav" aria-label="Główna nawigacja">
     <div class="wrap nav-inner">
-      <a class="brand" href="/" aria-label="H-CORE AERIAL SYSTEMS">
+      <a class="brand" href="/" aria-label="H-CORE AERIAL SYSTEMS — strona główna">
         <img class="brand-logo" src="assets/h-core-aerial-logo-1a.png" alt="H-CORE AERIAL SYSTEMS" width="1959" height="803" fetchpriority="high">
       </a>
-      <div class="nav-links">
-        <a href="#uslugi">Usługi</a><a href="#wildlife">Poszukiwania</a><a href="#system">System</a><a href="#kontakt">Kontakt</a>
+      <div class="nav-links" aria-label="Sekcje strony">
+        <a href="#uslugi">Usługi</a><a href="#wildlife">Poszukiwania</a><a href="#proces">Przebieg</a><a href="#system">System</a>
       </div>
-      <a class="nav-cta" href="#kontakt">Zgłoś zlecenie</a>
+      <div class="nav-actions">
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-panel" aria-label="Otwórz menu">
+          <span class="nav-toggle-label">Menu</span><span class="nav-toggle-icon" aria-hidden="true"></span>
+        </button>
+        <a class="nav-cta" href="#kontakt">Zgłoś zlecenie</a>
+      </div>
+    </div>
+    <div class="nav-panel" id="nav-panel" hidden>
+      <div class="wrap nav-panel-inner">
+        <a href="#uslugi"><span>01</span>Usługi</a>
+        <a href="#wildlife"><span>02</span>Poszukiwania</a>
+        <a href="#proces"><span>03</span>Przebieg</a>
+        <a href="#system"><span>04</span>System</a>
+      </div>
     </div>
   </nav>
 
@@ -232,7 +270,7 @@
       </div>
     </section>
 
-    <section class="section">
+    <section class="section" id="proces">
       <div class="wrap">
         <div class="section-top"><div class="section-index">04 / PRZEBIEG ZLECENIA</div><div class="section-title"><h2>Prosty proces terenowy.</h2><p>Każde zlecenie zaczyna się od celu operacji, a kończy materiałem, który można realnie wykorzystać.</p></div></div>
         <div class="process"><div class="step"><div class="n">01</div><h4>Cel</h4><p>Ustalamy obszar, problem i oczekiwany rezultat.</p></div><div class="step"><div class="n">02</div><h4>Plan lotu</h4><p>Sprawdzamy warunki, przestrzeń i dobieramy sensor oraz metodę przeszukania.</p></div><div class="step"><div class="n">03</div><h4>Nalot</h4><p>Zbieramy termowizję, obraz RGB, teleobiektyw i dane lokalizacyjne odpowiednie do zadania.</p></div><div class="step"><div class="n">04</div><h4>Raport</h4><p>Przekazujemy materiał, wskazane anomalie, lokalizacje i raport zależny od zakresu usługi.</p></div></div>
@@ -255,5 +293,27 @@
   </main>
 
   <footer><div class="wrap footer-inner"><span>H-CORE AERIAL SYSTEMS © 2026</span><span>Termowizja / Inspekcje / Poszukiwania / Kraków / Małopolska</span></div></footer>
+
+  <script>
+    (function(){
+      var nav=document.querySelector('.nav');
+      var toggle=document.querySelector('.nav-toggle');
+      var panel=document.getElementById('nav-panel');
+      if(!nav||!toggle||!panel)return;
+      var links=Array.prototype.slice.call(nav.querySelectorAll('a[href^="#"]'));
+      var sectionLinks=links.filter(function(link){return link.getAttribute('href')!=='#kontakt'});
+      var sections=sectionLinks.map(function(link){return document.querySelector(link.getAttribute('href'));}).filter(Boolean);
+      function closeMenu(){toggle.setAttribute('aria-expanded','false');toggle.setAttribute('aria-label','Otwórz menu');panel.hidden=true;}
+      toggle.addEventListener('click',function(){var open=toggle.getAttribute('aria-expanded')==='true';toggle.setAttribute('aria-expanded',String(!open));toggle.setAttribute('aria-label',open?'Otwórz menu':'Zamknij menu');panel.hidden=open;});
+      panel.addEventListener('click',function(event){if(event.target.closest('a'))closeMenu();});
+      document.addEventListener('keydown',function(event){if(event.key==='Escape')closeMenu();});
+      document.addEventListener('click',function(event){if(!nav.contains(event.target))closeMenu();});
+      window.addEventListener('resize',function(){if(window.innerWidth>900)closeMenu();});
+      function updateCurrent(){var marker=window.scrollY+Math.max(130,window.innerHeight*.24);var current='';sections.forEach(function(section){if(section.offsetTop<=marker)current=section.id;});sectionLinks.forEach(function(link){if(link.getAttribute('href')==='#'+current)link.setAttribute('aria-current','page');else link.removeAttribute('aria-current');});}
+      window.addEventListener('scroll',updateCurrent,{passive:true});
+      window.addEventListener('resize',updateCurrent);
+      updateCurrent();
+    })();
+  </script>
 <script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a38796b0e875f84d',t:'MTc4ODk3MTU0Mw=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>

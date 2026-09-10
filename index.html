@@ -291,7 +291,7 @@
   </main>
 
   <footer><div class="wrap footer-inner"><span>H-CORE AERIAL SYSTEMS © 2026</span><span>Termowizja / Inspekcje / Poszukiwania / Kraków / Małopolska</span></div></footer>
-<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a38cc81b88db8075',t:'MTc4OTAyNTk5Ng=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a38ce0ebef5e601f',t:'MTc4OTAyNzAxMg=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
   <script>
     (function(){
       var nav=document.querySelector('.nav'),toggle=document.querySelector('.nav-toggle'),panel=document.getElementById('nav-panel');
@@ -307,6 +307,22 @@
       window.addEventListener('resize',function(){if(window.innerWidth>900)closeMenu();});
       function updateCurrent(){var marker=window.scrollY+Math.max(130,window.innerHeight*.24),current='';sections.forEach(function(section){if(section.offsetTop<=marker)current=section.id;});sectionLinks.forEach(function(link){if(link.getAttribute('href')==='#'+current)link.setAttribute('aria-current','page');else link.removeAttribute('aria-current');});}
       window.addEventListener('scroll',updateCurrent,{passive:true});window.addEventListener('resize',updateCurrent);updateCurrent();
+    })();
+  </script>
+
+  <script id="smooth-brand-scroll">
+    (function(){
+      var brand=document.querySelector('.brand');
+      if(!brand)return;
+      brand.addEventListener('click',function(event){
+        if(event.button!==0||event.metaKey||event.ctrlKey||event.shiftKey||event.altKey)return;
+        event.preventDefault();
+        var toggle=document.querySelector('.nav-toggle'),panel=document.getElementById('nav-panel');
+        if(toggle&&panel){toggle.setAttribute('aria-expanded','false');toggle.setAttribute('aria-label','Otwórz menu');panel.hidden=true;}
+        if(location.hash)history.replaceState(null,'',location.pathname+location.search);
+        var motion=window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth';
+        window.scrollTo({top:0,behavior:motion});
+      });
     })();
   </script>
 </body>

@@ -57,6 +57,8 @@ jobs:
           # caused a noticeable anchor jump on mobile and made the sticky header
           # look as if it was hiding/collapsing.
           html = html.replace('<a class="brand" href="#top"', '<a class="brand" href="/"', 1)
+          # Keep contact details in every refreshed snapshot.
+          html = html.replace('<div class="cta-actions"><span class="btn btn-primary">Kontakt wkrótce</span><span class="btn btn-ghost">hcoreaerial.com</span></div>', '<div class="cta-actions"><a class="btn btn-primary" href="mailto:scan@hcoreaerial.com">scan@hcoreaerial.com</a><a class="btn btn-ghost" href="tel:+48512503640">tel. +48 512 503 640</a><span class="btn btn-ghost">NIP 692 206 95 23</span><span class="btn btn-ghost">Kraków, Polska</span></div>', 1)
 
           # Render the wildlife thermal photo as a real IMG instead of relying only
           # on background-image. This is more reliable on mobile browsers.
